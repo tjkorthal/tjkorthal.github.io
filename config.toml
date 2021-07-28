@@ -1,0 +1,30 @@
+baseURL = "http://example.org/"
+languageCode = "en-us"
+title = "Tyler Korthal"
+theme = "m10c"
+[params]
+  author = "Tyler Korthal"
+  avatar = "headshot.jpg"
+  description = "Developer, gamer, cyclist, Star Wars geek"
+[[params.social]]
+  icon = "github"
+  name = "Github"
+  url = "https://github.com/tjkorthal"
+[params.style]
+ darkColor = "#253031"
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    identifier = "devlog"
+    name = "Devlog"
+    url = "/tags/devlog"
+    weight = 2
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 3
