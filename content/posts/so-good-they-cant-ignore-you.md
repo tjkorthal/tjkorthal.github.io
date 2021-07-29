@@ -5,7 +5,7 @@ tags:
  - devlog
 ---
 
-After a less-than-successful attempt to find a new job I turned to a friend for advice. He directed me to the book So Good They Can't Ignore You by Cal Newport, and I read through the whole thing in a weekend. It changed my perspective from a "passion mindset" (what can the world offer me as I pursue my passion of software development?) to a "craftsman mindset" (what can I offer the world as I become a more valuable software developer?). This shift helped me realize that years of experience on a resumé and actual development experience can be wildly different, and if I want to become a top-class engineer I'll need to put in extra work. Here are some concepts that stood out to me while reading.
+After a less-than-successful attempt to find a new job I turned to a friend for advice. He directed me to the book _So Good They Can't Ignore You_ by Cal Newport, and I read through the whole thing in a weekend. It changed my perspective from a "passion mindset" (what can the world offer me as I pursue my passion of software development?) to a "craftsman mindset" (what can I offer the world as I become a more valuable software developer?). This shift helped me realize that years of experience on a resumé and actual development experience can be wildly different, and if I want to become a top-class engineer I'll need to put in extra work. Here are some concepts that stood out to me while reading.
 
 ## Passion
 
