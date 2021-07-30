@@ -1,0 +1,77 @@
+<!doctype html><html lang=en-us>
+<head>
+<title>July 29, 2021 devlog // Tyler Korthal</title>
+<link rel="shortcut icon" href=/favicon.ico>
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.86.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Tyler Korthal">
+<meta name=description content>
+<link rel=stylesheet href=https://tjkorthal.github.io/css/main.min.0f87181dcbedd543bf264bd2db91e392e9ae445e022027a727c56e5a8515ffd5.css>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="July 29, 2021 devlog">
+<meta name=twitter:description content="Started working on Node API using Express Took a cursory look into MongoDB and Prisma (Node ORM) Explored using Insomnia to generate documentation and test my API  A fresh start Though I know enough JavaScript to get by, I&rsquo;m much more familiar with Ruby. I already have my toolbox of go-to gems for Ruby projects, eg Rails, ActiveRecord, HTTP, RSpec, etc, but my JS toolbox is pretty empty. I&rsquo;ve used Express on small side projects before, and a quick internet search confirmed it&rsquo;s still a reliable JS server framework, but that&rsquo;s about it.">
+<meta property="og:title" content="July 29, 2021 devlog">
+<meta property="og:description" content="Started working on Node API using Express Took a cursory look into MongoDB and Prisma (Node ORM) Explored using Insomnia to generate documentation and test my API  A fresh start Though I know enough JavaScript to get by, I&rsquo;m much more familiar with Ruby. I already have my toolbox of go-to gems for Ruby projects, eg Rails, ActiveRecord, HTTP, RSpec, etc, but my JS toolbox is pretty empty. I&rsquo;ve used Express on small side projects before, and a quick internet search confirmed it&rsquo;s still a reliable JS server framework, but that&rsquo;s about it.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tjkorthal.github.io/posts/2021-07-29/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-07-29T11:20:29-04:00">
+<meta property="article:modified_time" content="2021-07-29T11:20:29-04:00">
+</head>
+<body>
+<header class=app-header>
+<a href=https://tjkorthal.github.io/><img class=app-header-avatar src=/headshot.jpg alt="Tyler Korthal"></a>
+<h1>Tyler Korthal</h1>
+<nav class=app-header-menu>
+<a class=app-header-menu-item href=/>Home</a>
+-
+<a class=app-header-menu-item href=/tags/devlog>Devlog</a>
+-
+<a class=app-header-menu-item href=/about/>About</a>
+</nav>
+<p>Developer, gamer, cyclist, Star Wars geek</p>
+<div class=app-header-social>
+<a href=https://github.com/tjkorthal target=_blank rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github"><title>Github</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a>
+</div>
+</header>
+<main class=app-container>
+<article class=post>
+<header class=post-header>
+<h1 class=post-title>July 29, 2021 devlog</h1>
+<div class=post-meta>
+<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+Jul 29, 2021
+</div>
+<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock"><title>clock</title><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+2 min read
+</div>
+<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+<a class=tag href=https://tjkorthal.github.io/tags/devlog/>devlog</a>
+</div>
+</div>
+</header>
+<div class=post-content>
+<ul>
+<li>Started working on Node API using Express</li>
+<li>Took a cursory look into MongoDB and Prisma (Node ORM)</li>
+<li>Explored using Insomnia to generate documentation and test my API</li>
+</ul>
+<h3 id=a-fresh-start>A fresh start</h3>
+<p>Though I know enough JavaScript to get by, I&rsquo;m much more familiar with Ruby. I already have my toolbox of go-to gems for Ruby projects, eg Rails, ActiveRecord, HTTP, RSpec, etc, but my JS toolbox is pretty empty. I&rsquo;ve used Express on small side projects before, and a quick internet search confirmed it&rsquo;s still a reliable JS server framework, but that&rsquo;s about it. It&rsquo;s going to take a lot more thought and research to do what takes me a just few minutes with Ruby.</p>
+<p>With JavaScript syntax, design paradigms, and packages, as well as a database model I&rsquo;ve never used before it will take me a lot longer to implement what I initially planned, so I&rsquo;ll try to start small. I&rsquo;ll attempt to isolate each unknown and understand it before moving on to the next thing, which means I might start by getting Prisma to work with Postgres before trying to learn Mongo (which is still only in &ldquo;experimental support&rdquo; by Prisma, anyway).</p>
+<h2 id=til>TIL</h2>
+<h3 id=git-submodules>Git submodules</h3>
+<p>I cloned this project on another machine, and nothing rendered when I ran the Hugo server. A bunch of errors showed up in the console like this:</p>
+<pre><code>WARN 2021/07/29 11:05:01 found no layout file for &quot;HTML&quot; for kind &quot;home&quot;: You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
+</code></pre><p>I had never cloned a project utilizing Git submodules, and that was my issue. The theme I&rsquo;m using is a submodule, and it hadn&rsquo;t been initialized, so the code to parse and build my site didn&rsquo;t even exist. After cloning a project with submodules I needed to run</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git submodule init
+$ git submodule update
+</code></pre></div><p>This pulled in the files I needed from git and it was able to build successfully.</p>
+</div>
+<div class=post-footer>
+</div>
+</article>
+</main>
+</body>
+</html>
