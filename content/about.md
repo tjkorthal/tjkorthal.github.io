@@ -3,7 +3,7 @@ title: "About"
 date: 2021-07-27T20:23:13-04:00
 ---
 
-Tyler is a software developer in Fort Wayne, Indiana with over 5 and a half years of experience in web application development.
+Tyler is a software developer in Fort Wayne, Indiana with over five and a half years of experience in web application development.
 
 Likes:
 * Ruby 💎
