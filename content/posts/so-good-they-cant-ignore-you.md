@@ -21,7 +21,7 @@ What makes a job great?
 * **relatedness**: feeling of connection with other people
 
 Almost any job can offer opportunities to gain career capital, but there are a few scenarios that may not be worth sticking out.
-* When there are few opportunities to distinguish yousrelf by developing relevant skills that are rare and valuable.
+* When there are few opportunities to distinguish yourself by developing relevant skills that are rare and valuable.
 * The job focuses on something useless or bad for the world.
 * You have to work with people you really dislike.
 
@@ -49,7 +49,9 @@ Once you've identified a mission don't go all-in on one strategy; small steps th
 
 ## Little bets
 
-The small steps toward a mission are "little bets." Little bets
+The small steps toward a mission are "little bets."
+
+Little bets
 * can be completed in less than a month
 * force you to create new value (master a new skill and produce new results)
 * produce a concrete result you can use to gather concrete feedback.
