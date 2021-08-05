@@ -1,0 +1,129 @@
+<!doctype html><html lang=en-us>
+<head>
+<title>August 5, 2021 devlog // Tyler Korthal</title>
+<link rel="shortcut icon" href=/favicon.ico>
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Tyler Korthal">
+<meta name=description content>
+<link rel=stylesheet href=https://tjkorthal.github.io/css/main.min.0f87181dcbedd543bf264bd2db91e392e9ae445e022027a727c56e5a8515ffd5.css>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="August 5, 2021 devlog">
+<meta name=twitter:description content="Started working on a menu API in Node yesterday Wrote a script to sync database records  Keeping it simple A few days ago I spun up a simple Node server with Express, started looking into packages to take the place of ActiveRecord, and began learning about MongoDB and how to use it. This was overwhelming, and I stopped because it seemed like too much all at once (spoiler alert: it was).">
+<meta property="og:title" content="August 5, 2021 devlog">
+<meta property="og:description" content="Started working on a menu API in Node yesterday Wrote a script to sync database records  Keeping it simple A few days ago I spun up a simple Node server with Express, started looking into packages to take the place of ActiveRecord, and began learning about MongoDB and how to use it. This was overwhelming, and I stopped because it seemed like too much all at once (spoiler alert: it was).">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tjkorthal.github.io/posts/2021-08-05/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-08-05T11:40:19-04:00">
+<meta property="article:modified_time" content="2021-08-05T11:40:19-04:00">
+</head>
+<body>
+<header class=app-header>
+<a href=https://tjkorthal.github.io/><img class=app-header-avatar src=/headshot.jpg alt="Tyler Korthal"></a>
+<h1>Tyler Korthal</h1>
+<nav class=app-header-menu>
+<a class=app-header-menu-item href=/>Home</a>
+-
+<a class=app-header-menu-item href=/tags/devlog>Devlog</a>
+-
+<a class=app-header-menu-item href=/about/>About</a>
+</nav>
+<p>Developer, gamer, cyclist, Star Wars geek</p>
+<div class=app-header-social>
+<a href=https://github.com/tjkorthal target=_blank rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github"><title>Github</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a>
+</div>
+</header>
+<main class=app-container>
+<article class=post>
+<header class=post-header>
+<h1 class=post-title>August 5, 2021 devlog</h1>
+<div class=post-meta>
+<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+Aug 5, 2021
+</div>
+<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock"><title>clock</title><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+3 min read
+</div>
+<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+<a class=tag href=https://tjkorthal.github.io/tags/devlog/>devlog</a>
+</div>
+</div>
+</header>
+<div class=post-content>
+<ul>
+<li>Started working on a <a href=https://github.com/tjkorthal/menu-api>menu API</a> in Node yesterday</li>
+<li>Wrote a script to sync database records</li>
+</ul>
+<h3 id=keeping-it-simple>Keeping it simple</h3>
+<p><a href=/posts/2021-07-29/>A few days ago</a> I spun up a simple Node server with Express, started looking into packages to take the place of ActiveRecord, and began learning about MongoDB and how to use it. This was overwhelming, and I stopped because it seemed like too much all at once (spoiler alert: it was). Back then I though maybe I should start with using Postgres as my database since I was more familiar with it, but that was still a bigger step than I needed.</p>
+<p>I really didn&rsquo;t want to manage a whole DB just to test a few CRUD endpoints. After thinking over it for a bit I realized I was trying to do too much. I needed a data <em>store</em> not a database. Persisting the data across server reboots could come later, until then I just needed a way to save data between requests. I created arrays to hold the objects I wanted to retain and used a counter variable to keep track of which ID to use next. This gave me exactly what I needed and nothing more. Rather than learning how to use a new framework to do one thing I just wrote the functionality myself and gained a bit of experience with JavaScript arrays, objects, and exports.</p>
+<h2 id=til>TIL</h2>
+<ul>
+<li>
+<p>How Postgres handles invalid statements inside a transaction</p>
+<p>I wrote a <a href=https://ruby.github.io/rake/>Rake</a> task that queries a legacy database and inserts new records into a Postgres database; here&rsquo;s what it looked like:</p>
+<div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>task <span style=color:#e6db74>:sync</span>, <span style=color:#f92672>[</span><span style=color:#e6db74>:since_date</span><span style=color:#f92672>]</span> <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>:environment</span> <span style=color:#66d9ef>do</span> <span style=color:#f92672>|</span>_t, args<span style=color:#f92672>|</span>
+  <span style=color:#75715e># select new active policies since the provided date</span>
+  new_policies <span style=color:#f92672>=</span> <span style=color:#66d9ef>Policy</span><span style=color:#f92672>.</span>active<span style=color:#f92672>.</span>where(<span style=color:#e6db74>&#34;created_at &gt; ?&#34;</span>, args<span style=color:#f92672>.</span>since_date)
+
+  <span style=color:#66d9ef>PostgresPolicy</span><span style=color:#f92672>.</span>transaction <span style=color:#66d9ef>do</span>
+    new_policies<span style=color:#f92672>.</span>each <span style=color:#66d9ef>do</span> <span style=color:#f92672>|</span>policy<span style=color:#f92672>|</span>
+      account_record <span style=color:#f92672>=</span> <span style=color:#66d9ef>PostgresAccount</span><span style=color:#f92672>.</span>find_by(<span style=color:#e6db74>account_number</span>: policy<span style=color:#f92672>.</span>account_number)
+      <span style=color:#75715e># ignore policies that belong to accounts that are not in the new system</span>
+      <span style=color:#66d9ef>next</span> <span style=color:#66d9ef>unless</span> account_record<span style=color:#f92672>.</span>present?
+
+      <span style=color:#66d9ef>begin</span>
+        <span style=color:#66d9ef>PostgresPolicy</span><span style=color:#f92672>.</span>create(<span style=color:#e6db74>account_id</span>: account_record<span style=color:#f92672>.</span>id, <span style=color:#e6db74>policy_number</span>: policy<span style=color:#f92672>.</span>policy_number)
+      <span style=color:#75715e># if the policy already exists rescue and move on</span>
+      <span style=color:#66d9ef>rescue</span> <span style=color:#66d9ef>ActiveRecord</span><span style=color:#f92672>::</span><span style=color:#66d9ef>RecordNotUnique</span> <span style=color:#f92672>=&gt;</span> e
+        puts e<span style=color:#f92672>.</span>message
+      <span style=color:#66d9ef>end</span>
+    <span style=color:#66d9ef>end</span>
+  <span style=color:#66d9ef>end</span>
+<span style=color:#66d9ef>end</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>I was getting this error, though, after I rescued from a <code>RecordNotUnique</code> error:</p>
+<pre><code>ActiveRecord::StatementInvalid: ActiveRecord::JDBCError: org.postgresql.util.PSQLException:
+ERROR: current transaction is aborted, commands ignored until end of transaction block:
+SELECT  &quot;accounts&quot;.* FROM &quot;accounts&quot; WHERE &quot;accounts&quot;.&quot;account_number&quot; = 135385 LIMIT 1
+</code></pre><p>After some head scratching and internet searching I came across <a href=https://stackoverflow.com/a/13103690/9129336>this Stack Overflow answer</a>.</p>
+<blockquote>
+<p>The reason you get this error is because you have entered a transaction and one of your SQL Queries failed, and you gobbled up that failure and ignored it. But that wasn&rsquo;t enough, THEN you used that same connection, using the SAME TRANSACTION to run another query. The exception gets thrown on the second, correctly formed query because you are using a broken transaction to do additional work. PostgreSQL by default stops you from doing this. - Eric Leschinski</p>
+</blockquote>
+<p>Since this script is a temporary solution and I&rsquo;m already handling <code>RecordNotUnique</code> errors I removed the transaction block and no longer received the error.</p>
+<p><strong>TL;DR</strong>: a failed query inside of a Postgres transaction will break the transaction.</p>
+</li>
+</ul>
+</div>
+<div class=post-footer>
+</div>
+</article>
+</main>
+</body>
+</html>

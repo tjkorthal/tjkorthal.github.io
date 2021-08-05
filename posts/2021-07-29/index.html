@@ -3,7 +3,7 @@
 <title>July 29, 2021 devlog // Tyler Korthal</title>
 <link rel="shortcut icon" href=/favicon.ico>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.86.1">
+<meta name=generator content="Hugo 0.87.0">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Tyler Korthal">
 <meta name=description content>
@@ -65,9 +65,17 @@ Jul 29, 2021
 <p>I cloned this project on another machine, and nothing rendered when I ran the Hugo server. A bunch of errors showed up in the console like this:</p>
 <pre><code>WARN 2021/07/29 11:05:01 found no layout file for &quot;HTML&quot; for kind &quot;home&quot;: You should create a template file which matches Hugo Layouts Lookup Rules for this combination.
 </code></pre><p>I had never cloned a project utilizing Git submodules, and that was my issue. The theme I&rsquo;m using is a submodule, and it hadn&rsquo;t been initialized, so the code to parse and build my site didn&rsquo;t even exist. After cloning a project with submodules I needed to run</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git submodule init
+<div class=highlight><div style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
+<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
+<pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git submodule init
 $ git submodule update
-</code></pre></div><p>This pulled in the files I needed from git and it was able to build successfully.</p>
+</code></pre></td></tr></table>
+</div>
+</div><p>This pulled in the files I needed from git and it was able to build successfully.</p>
 </div>
 <div class=post-footer>
 </div>
