@@ -8,9 +8,7 @@ date: 2021-07-29T11:41:08-04:00
 
   *Keep track of things I've learned, tried, or want to try*
 
-# Backlog
-
-* Go/Node API
+* Node API
 
   *Build an API from the ground up, implementing as many features as possible that would be beneficial/expected in a production-ready public API.*
 
@@ -25,6 +23,8 @@ date: 2021-07-29T11:41:08-04:00
   * Rate limiting
   * Full documentation (eg OpenAPI)
   * Tests
+
+# Backlog
 
 * Docker + Kubernetes deployment
 

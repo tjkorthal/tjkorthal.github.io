@@ -28,3 +28,6 @@ theme = "m10c"
     name = "About"
     url = "/about/"
     weight = 3
+[markup]
+[markup.highlight]
+lineNos = true
