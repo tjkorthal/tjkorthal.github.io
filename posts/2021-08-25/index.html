@@ -1,0 +1,95 @@
+<!doctype html><html lang=en-us>
+<head>
+<title>August 25, 2021 devlog // Tyler Korthal</title>
+<link rel="shortcut icon" href=/favicon.ico>
+<meta charset=utf-8>
+<meta name=generator content="Hugo 0.87.0">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=author content="Tyler Korthal">
+<meta name=description content>
+<link rel=stylesheet href=https://tjkorthal.github.io/css/main.min.0f87181dcbedd543bf264bd2db91e392e9ae445e022027a727c56e5a8515ffd5.css>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="August 25, 2021 devlog">
+<meta name=twitter:description content="Fixing the broken build Context: Most of our projects are written in Ruby and run on JRuby due to some legacy system integration requirements. A build script in Jenkins uses the warbler gem to create a .war package that gets deployed to a Tomcat server.
+A few days before I got back from vacation another dev merged a handful of changes into a new release to be QA&rsquo;d. Some of the changes were mine, and some were his, but they had all been through code review.">
+<meta property="og:title" content="August 25, 2021 devlog">
+<meta property="og:description" content="Fixing the broken build Context: Most of our projects are written in Ruby and run on JRuby due to some legacy system integration requirements. A build script in Jenkins uses the warbler gem to create a .war package that gets deployed to a Tomcat server.
+A few days before I got back from vacation another dev merged a handful of changes into a new release to be QA&rsquo;d. Some of the changes were mine, and some were his, but they had all been through code review.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tjkorthal.github.io/posts/2021-08-25/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-08-25T11:54:57-04:00">
+<meta property="article:modified_time" content="2021-08-25T11:54:57-04:00">
+</head>
+<body>
+<header class=app-header>
+<a href=https://tjkorthal.github.io/><img class=app-header-avatar src=/headshot.jpg alt="Tyler Korthal"></a>
+<h1>Tyler Korthal</h1>
+<nav class=app-header-menu>
+<a class=app-header-menu-item href=/>Home</a>
+-
+<a class=app-header-menu-item href=/tags/devlog>Devlog</a>
+-
+<a class=app-header-menu-item href=/about/>About</a>
+</nav>
+<p>Developer, gamer, cyclist, Star Wars geek</p>
+<div class=app-header-social>
+<a href=https://github.com/tjkorthal target=_blank rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github"><title>Github</title><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37.0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44.0 0020 4.77 5.07 5.07.0 0019.91 1S18.73.65 16 2.48a13.38 13.38.0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07.0 005 4.77 5.44 5.44.0 003.5 8.55c0 5.42 3.3 6.61 6.44 7A3.37 3.37.0 009 18.13V22"/></svg>
+</a>
+</div>
+</header>
+<main class=app-container>
+<article class=post>
+<header class=post-header>
+<h1 class=post-title>August 25, 2021 devlog</h1>
+<div class=post-meta>
+<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+Aug 25, 2021
+</div>
+<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock"><title>clock</title><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+4 min read
+</div>
+<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+<a class=tag href=https://tjkorthal.github.io/tags/devlog/>devlog</a>
+</div>
+</div>
+</header>
+<div class=post-content>
+<h1 id=fixing-the-broken-build>Fixing the broken build</h1>
+<p><em><strong>Context:</strong> Most of our projects are written in Ruby and run on <a href=https://www.jruby.org/>JRuby</a> due to some legacy system integration requirements. A build script in <a href=https://www.jenkins.io/>Jenkins</a> uses the <a href=https://rubygems.org/gems/warbler>warbler gem</a> to create a <code>.war</code> package that gets deployed to a <a href=http://tomcat.apache.org/>Tomcat server</a>.</em></p>
+<p>A few days before I got back from vacation another dev merged a handful of changes into a new release to be QA&rsquo;d. Some of the changes were mine, and some were his, but they had all been through code review. Release 1.x.14 was already in production, and this was going to be 1.x.15. The changes weren&rsquo;t very big and nothing was suspicious, just adding a [Rake task]It turns out (2021-08-05.md) and some new Vue components. The build script succeeded, but when the build was deployed the app failed to boot. The app hadn&rsquo;t loaded completely, so the logs weren&rsquo;t configured at this point. We were given an error message and a line number, but it just indicated a system exit raised by Bundler without giving a reason.</p>
+<p>Up to this point I had never deployed a <code>.war</code> package to Tomcat (I didn&rsquo;t even have Tomcat on my machine). Locally we use Puma, and we depend on scripts to deploy to servers outside of development. It took a bit of setup, but it wasn&rsquo;t complicated to get Tomcat installed and running on my machine so I could test a similar deployment without relying on the QA server. Before long I was able to deploy the generated <code>.war</code> to my server, and it raised the same error as QA.</p>
+<p>It turns out Bundler was catching an error that occurred when it couldn&rsquo;t find a gem and logging details to STDERR, but they didn&rsquo;t show up in the Tomcat logs. There is probably some configuration to make that work, but rather than try to dig into unfamiliar configs I commented out the rescue block so the error bubbled up to where I could see it. Bundler claimed it couldn&rsquo;t find the gem <code>http-parser</code>, which is a dependency of the <code>http</code> gem that had been added in a previous release.</p>
+<p>Initially I removed the gem since I didn&rsquo;t think it was being used, and the server booted successfully. But a tester quickly discovered that we did, in fact, use the gem, and one a feature broke when I removed it. 🤦🏻‍♂️ After a lot more digging I finally discovered that the version of <code>http-parser</code> it relied on didn&rsquo;t have a Java extension, so Bundler couldn&rsquo;t find a version it could use. My final solution involved rolling the <code>http</code> gem back to a previous version that didn&rsquo;t have the <code>http-parser</code> dependency.</p>
+<p>I&rsquo;m still unsure how the app can run locally but not on the server or what caused the dependency to break (I hope to find out in the future) but at least we can move forward with testing new features.</p>
+<h2 id=takeaways>Takeaways</h2>
+<ul>
+<li>
+<p>If the way your server runs in development is significantly different than how it runs in QA, staging, production, etc. you&rsquo;re going to have a hard time tracking down the cause of server issues. I&rsquo;m not saying you need to compile assets and run in production mode all the time (that&rsquo;s actually a pretty bad idea), but the hardest issues to fix are the ones you can&rsquo;t recreate.</p>
+</li>
+<li>
+<p>Relying on something that &ldquo;just works&rdquo; (like our deployment process) is great&mldr; until something breaks. You don&rsquo;t need to be an expert at the internals of every dependency you use (a big reason to use a dependency is because it does something so you don&rsquo;t have to figure it out on your own), but be prepared to do a deep dive into it if something breaks in the future.</p>
+</li>
+</ul>
+<h2 id=til>TIL</h2>
+<ul>
+<li>Always double check before removing a dependency you think is unused. Tests passing and the server booting don&rsquo;t mean you didn&rsquo;t break something. 😅</li>
+</ul>
+<h2 id=listening-to>Listening to:</h2>
+<ul>
+<li>
+<p><a href="https://open.spotify.com/playlist/37i9dQZF1E4vUblDJbCkV3?si=fde54c87b9604c4b">Lord Huron Radio</a></p>
+</li>
+<li>
+<p><a href="https://open.spotify.com/artist/2QkgSnhat4djSXQA6EvQJW?si=fZcNORF3RTCtMNgh6OtmRQ&dl_branch=1">Apollo Suns</a></p>
+</li>
+<li>
+<p><a href="https://open.spotify.com/artist/34BHw3ZxeQsZ2yYxoummp7?si=EuqS_tJIR_KsaHyPFbprqA&dl_branch=1">Five Alarm Funk</a></p>
+</li>
+</ul>
+</div>
+<div class=post-footer>
+</div>
+</article>
+</main>
+</body>
+</html>
