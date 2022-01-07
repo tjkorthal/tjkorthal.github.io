@@ -3,7 +3,7 @@
 <title>August 5, 2021 devlog // Tyler Korthal</title>
 <link rel="shortcut icon" href=/favicon.ico>
 <meta charset=utf-8>
-<meta name=generator content="Hugo 0.87.0">
+<meta name=generator content="Hugo 0.91.2">
 <meta name=viewport content="width=device-width,initial-scale=1">
 <meta name=author content="Tyler Korthal">
 <meta name=description content>
@@ -109,7 +109,7 @@ Aug 5, 2021
 </code></pre></td></tr></table>
 </div>
 </div><p>I was getting this error, though, after I rescued from a <code>RecordNotUnique</code> error:</p>
-<pre><code>ActiveRecord::StatementInvalid: ActiveRecord::JDBCError: org.postgresql.util.PSQLException:
+<pre tabindex=0><code>ActiveRecord::StatementInvalid: ActiveRecord::JDBCError: org.postgresql.util.PSQLException:
 ERROR: current transaction is aborted, commands ignored until end of transaction block:
 SELECT  &quot;accounts&quot;.* FROM &quot;accounts&quot; WHERE &quot;accounts&quot;.&quot;account_number&quot; = 135385 LIMIT 1
 </code></pre><p>After some head scratching and internet searching I came across <a href=https://stackoverflow.com/a/13103690/9129336>this Stack Overflow answer</a>.</p>
